@@ -1,0 +1,61 @@
+extends ../../layouts/defaultLayout2
+block stylesheets
+    link(href=relativeRoot+"../css/common/index.min.css",type="text/css",rel="stylesheet")
+block content
+    .market-detail-inf.clearfix
+        .top
+            .banner-wrap.clearfix
+                .bg-img
+                .clearfix
+        .center
+            .head 首页 > 市场资讯
+            .body
+                .title 【钢铁周报第45期】期货原料齐发力 钢价节节攀高！
+                .content
+                    .mt-30.mb-20
+                        span 发布时间:2016-12-07
+                        // img.bg-img(src="/images/common/essay-forward.png" style="float:right")
+                        |<div class="bdsharebuttonbox">
+                        |<a href="#" class="bds_more" data-cmd="more"></a>
+                        |<a href="#" class="bds_qzone" data-cmd="qzone" > </a>
+                        |<a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a
+                        |href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin"
+                        |data-cmd="weixin" > </a> </div>
+                        |<script>window._bd_share_config = {
+                        |"common": {
+                        |"bdSnsKey": {},
+                        |"bdText": "",
+                        |"bdMini": "2",
+                        |"bdPic": "",
+                        |"bdStyle": "0",
+                        |"bdSize": "16"
+                        |},
+                        |"share": {},
+                        |"image": {
+                        |"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+                        |"viewText": "分享到：",
+                        |"viewSize": "16"
+                        |},
+                        |"selectShare": {
+                        |"bdContainerClass": null,
+                        |"bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]
+                        |}
+                        |};
+                        |with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+                    span 一、本期钢铁市场回顾：期货原料齐发力 钢价节节攀高
+                    span 在期货和钢坯的连续上涨下，本周国内钢材市场大幅走高。中华东主导钢厂上调出厂价，此举进一步刺激市场看涨心态。虽然下半周成交有所回落，但期货强势拉涨，商家心态依旧积极乐观，现货价格节节攀高。据国内知名钢铁电商交易平台---钢为网（www.prcsteel.com）市场监测显示，截止本周五（11月4日）发稿前，国内重点市场20mm三级螺纹均价2900元（周环比涨141），8mm高线均价2980元（涨135），4.75mm普热卷均价3199元（涨187），20mm中厚板均价3057元（涨180），1.0mm冷板均价4050元（涨188）。<br>
+                    .text-center
+                        img.bg-img(src="/images/common/market-detail-chart.png")
+                    span 二、下期国内钢价走势预警：供需关系进一步改善钢价仍存冲高可能！<br>
+                    span 本期国内钢价整体上涨，钢为网分析师在梳理分析最近一周以来市场交投情况、消息、期货市场、钢厂产供及原料市场等相关消息后认为，下期应注意：<br>
+                    span 1.供需方面，近期不少工地在赶工期，受“买涨不买跌”心态影响，本周终端采购的积极性较高，整体成交较上周有所好转。全国钢材市场库存延续下降趋势，自国庆节至今连续4周下降。汽车、家电等行业产销两旺，房地产、基建行业运行良好，国内钢市需求旺盛，带动近期市场库存连续下降。<br>
+                    span 2.原料方面，本周原料价格全面上涨，其中唐山钢坯价格涨140元，焦炭、铁矿石和废钢价格继续上涨。近期钢厂减产，高炉检修较多，钢厂检修确实体现出来成规模性的，再加之部分钢厂也开始调整产品结构，因此造成资源表现偏紧。不过本周拉涨幅度较大，但出货显现疲软，预计下周原料价格小幅波动为主。<br>
+                    span 3.宏观方面，10月份中国官方制造业PMI大幅回升0.8个点至51.2%，创出2014年8月以来的新高，主要分项指数中，生产、订单、库存、价格均出现回升，说明国内经济触底回暖的迹象明显。10月钢铁行业PMI重回扩张区，显示今年二季度以来我过钢铁行业景气度明显回升。而近日江苏地区再次开展中频炉企业整治、唐山丰润区启动重污染天气3级预警响应，环保因素对钢厂阶段性生产仍将形成影响。<br>
+                    span 4.资金方面，昨日，央行将逆回购缩量至700亿元，令公开市场连续第二日净回笼资金。   同日下午，央行宣布对21家机构开展了4370亿元中期借贷便利（MLF）操作。由此可见，央行在释放大额长期流动性来维稳跨年资金面的同时，也在悄然净回笼短期流动性，凸显"锁短放长"的用意。<br>
+    .clearfix
+    script(type='text/javascript').
+        require(["jquery", 'panel', 'pagination', 'ractive', 'placeholder', 'window', 'choice-ganged', 'roll', "slick", 'jquery-fly', 'slidesjs'],
+                function ($, Panel, Pagination, Ractive, placeholder, UIWindow, ChoiceGanged) {
+
+                });
+

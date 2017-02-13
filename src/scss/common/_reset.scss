@@ -1,0 +1,19 @@
+@import "../variables";
+
+body {
+  font: 14px "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Heiti SC", "Microsoft YaHei", SimSun, "WenQuanYi Micro Hei", sans-serif;
+  color: $sec-font-color;
+  * {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+select {
+  vertical-align: super;
+}

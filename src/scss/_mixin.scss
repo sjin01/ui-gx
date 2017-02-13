@@ -1,0 +1,184 @@
+@import "variables";
+
+// common mixins ...
+@import "lib/mixins";
+
+@mixin sec-button($color,$hover-color,$background-color,$hover-background-color,$border-color,$width:null,$height:2.5em){
+  color: $color;
+  line-height: $height;
+  height: $height;
+  text-align: center;
+  background-color: $background-color;
+  border:1px solid $border-color;
+  display: inline-block;
+  text-decoration: none;
+  @include transition(0.2s linear);
+  @if($width){
+    width: $width;
+  }@else{
+    padding-left:1em;
+    padding-right:1em;
+  }
+  cursor: pointer;
+  @include box-sizing(border-box);
+  &:hover,&.selected{
+    color: $hover-color;
+    background-color: $hover-background-color;
+    border-color: $hover-background-color;
+  }
+  &.selected{
+    cursor: not-allowed;
+  }
+  &.disabled{
+    background-color: $sec-light-bg-color;
+    cursor: not-allowed;
+    color: $sec-gray-font-color;
+    border-color: darken($sec-light-bg-color,20%);
+  }
+  &.button-small{
+    width: $sec-normal-button-width;
+  }
+}
+
+@mixin sec-input($height:null){
+  @if($height){
+    height: $height;
+    line-height: $height;
+  }@else{
+    height:$sec-input-height;
+    line-height: $sec-input-line-height;
+  }
+  border:1px solid $sec-gray-border-color;
+  padding-left:$sec-input-padding;
+  @include border-radius($sec-input-border-radius);
+  @include box-sizing(border-box);
+  outline: none;
+}
+@mixin sec-select{
+  height:$sec-input-height;
+  line-height: $sec-input-line-height;
+  border:1px solid $sec-gray-border-color;
+  @include border-radius($sec-input-border-radius);
+  background-color: white;
+  padding-left:$sec-input-padding;
+  @include box-sizing(border-box);
+  outline:none;
+}
+@mixin sec-textarea{
+  border: 1px solid $sec-gray-border-color;
+  padding-left:$sec-input-padding;
+  @include border-radius($sec-input-border-radius);
+  @include box-sizing(border-box);
+  outline: none;
+}
+@mixin sec-border{
+  border:1px solid $sec-gray-border-color;
+}
+
+@mixin sec-box-shadow ($shadow:1px 1px 1px 0 $sec-border-color) {
+  box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+}
+@mixin sec-input-file{
+  position: relative;
+  overflow: hidden;
+
+  input[type="file"]{
+    display: block;
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+@mixin sec-news-list($height, $padding-num, $rows, $font-size){
+  width: 100%;
+  padding: $padding-num 0;
+
+  .ui-col-6{
+    border-left: 1px solid $sec-border-color4;
+    &:first-child{
+      border-left: none;
+    }
+  }
+
+  .news-item{
+    $row-height : ($height - $padding-num*2)/$rows;
+
+    position: relative;
+    color: $sec-font-color;
+    font-size: $font-size;
+    line-height: $row-height;
+    height: $row-height;
+
+    padding-left: 14px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: ($row-height - 4px)/2;
+      left: 0;
+      width: 4px;
+      height: 4px;
+      background-color: $sec-border-color5;
+    }
+  }
+}
+
+@mixin sec-news-list2($height, $padding-num, $rows, $font-size){
+  padding: $padding-num;
+
+  .ui-col-6{
+    border-left: 1px solid $sec-border-color4;
+    &:first-child{
+      border-left: none;
+    }
+  }
+
+  .news-item{
+    $row-height : ($height - $padding-num*2)/$rows;
+    position: relative;
+    color: $sec-font-color;
+    font-size: $font-size;
+    line-height: $row-height;
+    height: $row-height;
+    padding-left: 14px;
+    padding-right: 100px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: ($row-height - 4px)/2;
+      left: 0;
+      width: 4px;
+      height: 4px;
+      background-color: #dcdcdc;
+    }
+    span{
+      position: absolute;
+      top:0;
+      right:0;
+      &:first-child{
+        position:relative;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &.date{
+        color: #898989;
+      }
+    }
+  }
+}

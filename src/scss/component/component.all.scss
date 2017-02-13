@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// import 所有的组件 css  除了public； public已由common 下面的 base import
+
+
+// star-rating 依赖 font-awesome
+@import "star-rating";
+@import "../font-awesome/font-awesome";
+
+// 一些可能用到的 外部 css

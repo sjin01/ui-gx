@@ -1,0 +1,12 @@
+extends ../layouts/managerLayout
+block content
+    div(style="height: 50px;padding-top: 50px;")
+        p 相关文档请参考
+            a(href="http://harvesthq.github.io/chosen/",traget="_blank") 此处
+        select(style="width:200px;margin:auto;")
+            for i in [1,2,3,4,5]
+                option 这是一个选项#{i}
+    script(type="text/javascript").
+        require(['jquery','iSelect'],function($){
+            $('select').iSelect();
+        });

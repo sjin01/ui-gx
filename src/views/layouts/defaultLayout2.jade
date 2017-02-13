@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
+        meta(http-equiv="X-UA-Compatible",content="IE=edge")
+        meta(name="renderer",content="webkit")
+        meta(name="viewport",content="width=device-width, user-scalable=no")
+        title 河马物流
+        link(href=relativeRoot+"../css/common/base.min.css",type="text/css",rel="stylesheet")
+        link(href=relativeRoot+"../css/component/component.all.min.css",type="text/css",rel="stylesheet")
+        block stylesheets
+        script(type="text/javascript").
+            var require = {baseUrl: '#{relativeRoot}' + "../js"};
+    body
+        script(src=relativeRoot + "../js/lib/require.js")
+        script(src=relativeRoot + "../js/base.js")
+        script(src=relativeRoot + "../js/main.js")
+        include top2
+        block content
+        include bottom

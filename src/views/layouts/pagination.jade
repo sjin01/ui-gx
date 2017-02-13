@@ -1,0 +1,54 @@
+.ui_pagination.page-patch
+    .page_size 每页显示
+        ul
+            li.selected 15
+            li 30
+            li 50
+    ul.pagination
+        li.disabled
+            span(class="current first") 首页
+        li.disabled
+            span(class="current prev") 上一页
+        li.active
+            span.current 1
+        each val, index in [2, 3, 4, 5]
+            li
+                a.page(href="javascript:void(0);")= val
+        li.disabled
+            span(class="current next") 下一页
+        li.disabled
+            span(class="current next") 尾页
+    .page_total 至第
+        input(type="text",class="go_input",value="1")
+        |页,
+        a(href="javascript:void(0);",class="go_btn") Go
+        |共
+        span 2
+        |条记录
+    div(class="sec-gray-separator mt-20")
+script(type="text/javascript").
+    require(['jquery'],function($){
+        $(function(){
+            var searchBox = $("#search-box");
+            var expander = $("#expander");
+            var height = searchBox.height();
+            expander.click(function(){
+                var me = $(this);
+                if(me.hasClass('expand')){
+                    me.removeClass('expand').addClass('collapsed');
+                    me.find("span").text('收起');
+                    searchBox.find(">ul").css("height",height);
+                }else{
+                    me.removeClass('collapsed').addClass('expand');
+                    me.find("span").text('展开');
+                    searchBox.find(">ul").css("height","190px");
+                }
+            });
+
+            if(searchBox.find(">ul >li").length>4){
+                expander.trigger('click');
+            }
+        });
+
+    });
+

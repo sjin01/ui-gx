@@ -1,0 +1,77 @@
+extends ../../layouts/managerLayout
+block content
+    .mt-20.mb-20.white-bg.pl-20.pr-20.pb-20
+        .order-page-title
+            label 填写询价需求
+        .order-form
+            .section-title 公司信息
+            .sec-gray-bolder.pt-15.pb-15.mt-15
+                .form-group
+                    label.form-label.sec-required 公司名称:
+                    .form-content
+                        input(type="text", placeholder="湖南钢信信息技术有限公司")
+            .section-title.mt-15 起始地/目的地
+            .sec-gray-bolder.pt-15.pb-15.mt-15
+                .form-group
+                    label.form-label.sec-required 起始地:
+                    .form-content
+                        input(type="text", placeholder="请选择起始地")
+                        span.ml-20 如无起始地,
+                        a.sec-blue-link.ml-5 点此新增
+                            i.icon.icon-add
+                .form-group.mt-10
+                    .form-content.no-label
+                        select.pull-left
+                            option 省
+                        select.pull-left.ml-10
+                            option 市
+                        input(type="text", placeholder="请输入详细地址").ml-20.big
+                .pl-20.pr-20.mt-15.mb-15
+                    hr
+                .form-group
+                    label.form-label.sec-required 目的地:
+                    .form-content
+                        input(type="text", placeholder="请选择目的地")
+                        span.ml-20 如无目的地,
+                        a.sec-blue-link.ml-5 点此新增
+                            i.icon.icon-add
+            .section-title.mt-15 货物信息
+            .sec-gray-bolder.pt-15.pb-15.mt-15
+                .form-group
+                    label.form-label.sec-required 货物:
+                    .form-content
+                        .ui-row-sm.no-margin
+                            input(type="text", placeholder="请输入货物名称").pull-left
+                            input(type="text", placeholder="请输入货物重量").ml-20.pull-left.sm2
+                            span.ml-20 吨
+                            a.sec-blue-link.ml-50 添加货物
+                                i.icon.icon-add
+                        .ui-row-sm.no-margin.mt-10
+                            input(type="text", placeholder="请输入货物名称").pull-left
+                            input(type="text", placeholder="请输入货物重量").ml-20.pull-left.sm2
+                            span.ml-20 吨
+                            a.sec-blue-link.ml-50 删除货物
+                                i.icon.icon-del
+            .section-title.mt-15 其他信息
+            .sec-gray-bolder.pt-15.pb-15.mt-15
+                .form-group.ui-row-sm
+                    .ui-col-4
+                        label.form-label 收货方:
+                        input(type="text", placeholder="请输入收货方").sm.pull-left.ml-10
+                    .ui-col-4
+                        label.form-label 收货联系人:
+                        input(type="text", placeholder="请输入联系人").sm.pull-left.ml-10
+                    .ui-col-4
+                        label.form-label 收货联系电话:
+                        input(type="text", placeholder="请输入联系电话").sm.pull-left.ml-10
+                .form-group.ui-row-sm.mt-10
+                    .ui-col-4
+                        label.form-label 发货日期:
+                        input(type="text", placeholder="请选择发货日期").sm.pull-left.ml-10
+                    .ui-col-4
+                        label.form-label 要求到货日期:
+                        input(type="text", placeholder="请选择到货日期").sm.pull-left.ml-10
+                    .ui-col-4
+                        label.form-label 期望运价:
+                        input(type="text", placeholder="请输入期望运价").sm.pull-left.ml-10
+        .submit-btn.btn-center.mt-20 提交询价

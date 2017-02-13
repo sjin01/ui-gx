@@ -1,0 +1,81 @@
+//ul.side-bar
+    li.cart
+        a
+            i
+            span.badge 10
+        .hover(style="display:none") 购物车
+    li.order
+        a
+            i
+        .hover(style="display:none") 我的订单
+    li.supporter
+        a
+            i
+        .hover(style="display:none") 联系客服
+    li.collect
+        a
+            i
+        .hover(style="display:none") 我的关注
+    li.up
+        a
+            i
+        .hover(style="display:none") 返回顶部
+
+ul.side-bar-left(style="display:none")
+    li.selected
+        a(href="#f1") 热轧
+        span
+            i.icon-sidebar-hot-rolled
+    li
+        a(href="#f2") 冷轧
+        span
+            i.icon-sidebar-cold-rolled
+    li
+        a(href="#f3") 热点
+        span
+            i.icon-sidebar-hotspot
+
+
+script(type='text/javascript').
+    require(["jquery"], function ($) {
+        $('.side-bar li').mouseover(function (){
+            $(this).find('.hover').show();
+            $(this).find('.hover').stop(true, false).animate({"right": 44, "width":76, "padding-left":15, "font-size":14}, 300);
+        }).mouseleave(function (){
+            $(this).find('.hover').hide();
+            $(this).find('.hover').stop(true, false).animate({"right": 0, "width":48, "padding-left":0, "font-size":12}, 300);
+        });
+
+        $('.side-bar-left a').on('click', function (){
+            $('.side-bar-left li').removeClass("selected");
+            $(this).parent("li").addClass("selected");
+        });
+
+        $(window).scroll(function (event) {
+            var winPos = $(window).scrollTop();
+
+            if (winPos < 320) {
+                $('.side-bar-left').hide();
+            } else {
+                $('.side-bar-left').show();
+
+                if (winPos < $('#f1').offset().top) {
+                    // 没到F1
+                } else if (winPos < $('#f2').offset().top) {
+                    // F1
+                    var $this = $('.side-bar-left a[href="#f1"]');
+                    $('.side-bar-left li').removeClass("selected");
+                    $this.parent("li").addClass("selected");
+                } else if (winPos < $('#f3').offset().top) {
+                    var $this = $('.side-bar-left a[href="#f2"]');
+                    $('.side-bar-left li').removeClass("selected");
+                    $this.parent("li").addClass("selected");
+                } else {
+                    var $this = $('.side-bar-left a[href="#f3"]');
+                    $('.side-bar-left li').removeClass("selected");
+                    $this.parent("li").addClass("selected");
+                }
+            }
+
+        });
+    });

@@ -1,0 +1,86 @@
+extends ../layouts/managerLayout
+block stylesheets
+    link(href=relativeRoot+"../css/common/login.css",type="text/css",rel="stylesheet")
+block content
+
+    .ml-20
+        a(href="#")#alertbtn 召唤提示框
+        br
+        a(href="#")#confirmbtn 召唤警告
+        br
+        a(href="#")#confirmbtn2 召唤错误框
+        br
+        a(href="#")#confirmbtn3 召唤确认框
+        br
+        br
+
+        a(href="#")#confirmbtn4 重发成功
+        br
+        br
+        a(href="#")#confirmbtn5 测试alert
+        br
+        br
+        a(href="#")#confirmbtn6 测试不要标题
+
+
+    script.
+        require(['jquery', 'popup', 'window'], function ($, Popup, UIWindow) {
+            $('#alertbtn').click(function () {
+                UIWindow.confirm('请输入验证码！');
+            });
+
+            $('#confirmbtn').click(function (){
+                UIWindow.confirm ({
+                    type:'confirm', //对话框类型，可选值为:'success','warning','error','confirm'
+                    title:'确定吗！', // 单独设置对话框标题 msg标题继承之
+                    message:'现在您可以使用新密码登录现在您可以使现在您可以使用新密码登录！用新密码登现在您可以使用新密码登录！录！！莫处说要支持4行，莫处说要支持4行，莫处说要支持4行，', //消息内容
+                    okText:'我愿意', //确定按钮文本内容
+                    cancelText:'我拒绝' //取消文本内容
+                });
+            });
+            $('#confirmbtn2').click(function () {
+                UIWindow.confirm({
+                    type: 'error', //对话框类型，可选值为:'success','warning','error','confirm'
+                    msgTitle: '出错啦！', // 单独设置 msg标题， 对话框标题则采用默认策略
+                    message: '现在您可以使用新密码登录现在您可以使现在您可以使用新密码登录！用新密码登现在您可以使用新密码登录！录！！莫处说要支持4行，莫处说要支持4行，莫处说要支持4行，' //消息内容
+                });
+            });
+            $('#confirmbtn3').click(function () {
+                var temp = UIWindow.confirm({
+                    type: 'success', //对话框类型，可选值为:'success','warning','error','confirm'
+                    title: '我的关注', //对话框标题
+
+                    msgTitle: '选购资源成功加入购物车！', // 消息标题
+                    message: '', //消息内容
+                    okText: '去购物车', //确定按钮文本内容
+                    cancelText: '继续选购', //取消文本内容
+                    cancelBtn:true
+                }).then(function (result){
+                    console.log(result);
+                })
+
+            });
+            $('#confirmbtn4').click(function () {
+                UIWindow.confirm({
+                    type: 'success', //对话框类型，可选值为:'success','warning','error','confirm'
+                    msgTitle: '重发成功！' // 消息标题
+                });
+            });
+            $('#confirmbtn5').click(function () {
+                var temp = UIWindow.alert({
+                    type: 'success', //对话框类型，可选值为:'success','warning','error','confirm'
+                    okText: '好的', //确定按钮文本内容
+                    message: '重发成功！' // 消息标题
+                }).then(function (result) {
+                    console.log(result);
+                })
+            });
+            $('#confirmbtn6').click(function () {
+                UIWindow.confirm({
+                    type: 'confirm', //对话框类型，可选值为:'success','warning','error','confirm'
+                    okText: '好的', //确定按钮文本内容
+                    message: '重发成功123123！', // 消息标题
+                    notShowMsgTitle : true
+                });
+            });
+        });

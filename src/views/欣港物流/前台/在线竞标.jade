@@ -1,0 +1,109 @@
+extends ../../layouts/defaultLayout2
+block stylesheets
+    link(href=relativeRoot + "../css/common/index.min.css",type="text/css",rel="stylesheet")
+block content
+    .bid
+        .adv
+            span
+                | 亲，赶紧去抢标吧！还有
+                span.font-24.font-bold 3
+                | 个标书等着您哦！
+                br
+                | 标书均通过平台审核认证，靠谱！
+            // img(src=relativeRoot + "../images/common/banner-bid.jpg")
+        .bg-light
+            .wrapper
+                .ui-row-sm.mb-20
+                    .ui-col-7-10
+                        .bg-white.mt-20
+                            .tabs.clearfix
+                                .tab.cur
+                                    a(href="javascript:void(0)") 竞标总览
+                                .tab
+                                    a(href="javascript:void(0)") 竞标中
+                                .tab
+                                    a(href="javascript:void(0)") 已经束标
+                            .bid-table#recordList
+                    .ui-col-3-10
+                        .second-title
+                            span.title 中标公告
+                            a(href="#") 更多>>
+                        .bidder-content
+                            - var i = 0;
+                            while (i < 9)
+                                - i++;
+                                .b-item
+                                    span.font-orange 用户名：15869662699
+                                    span 货物名称：道砟
+                                    span 用户名：HGHJK5423
+                                    span 时间：2016-09-12
+                                    .user-pic
+                                        i.icon.icon-user-default
+                                    i.icon-bid-ok
+
+    script#recordListTpl(type='text/ractive')
+        table.ctrl-table
+            tbody
+                | {{#items:index}}
+                tr
+                    td
+                        table.content-table
+                            tr
+                                td(rowspan="4").pic
+                                    | {{#if v1}}
+                                    img(src= relativeRoot + "{{v1}}")
+                                    | {{/if}}
+                                    | {{#if v1==''&& index%2==1}}
+                                    i.icon.icon-res-default-boat
+                                    | {{/if}}
+                                    | {{#if v1==''&& index%2==0}}
+                                    i.icon.icon-res-default-car
+                                    | {{/if}}
+                                td(colspan="2").title
+                                    span {{v2}}
+                                    i.icon.icon-arrows-left-blue
+                                    span {{v3}}
+                                td.w-140
+                                    span.orange {{v4}}
+                            tr
+                                td(colspan="2") 货物名称：{{v5}}
+                                td.w-140 限价：{{v6}}
+
+                            tr
+                                td 投标截止时间：{{v7}}
+                                td 竞标：{{v8}}
+                                td.w-140
+                                    a.btn-bid 立即竞标
+                | {{/items}}
+
+
+
+    script#myModal(type='text/ractive')
+        .bid-modal.cys
+            .right
+                .b-title.mt-120 注册成为承运商
+                .b-title.mt-10 更多运单等你来抢
+                .div-qrcode.mt-40
+                    img(src=relativeRoot+"../images/common/qrcode.jpg")
+                .b-note.mt-10 【扫一扫，开始竞标】
+
+
+    script(type="text/javascript").
+        require(['jquery', 'pagination', 'pairdate', 'popup', 'pikaday.jquery', 'iCheck'], function ($, Pagination, Pairdate, Popup) {
+            var pagination = new Pagination({
+                target: "#recordList",
+                template: "#recordListTpl",
+                localItems: !{JSON.stringify(items)}
+            });
+
+            $('.btn-bid').on('click', function () {
+                var myPopup = new Popup({
+                    width: '768px',
+                    height: '568px',
+                    template: '#myModal',
+                    data:{
+                        hiddenTitle:true
+                    }
+                });
+            });
+        });

@@ -1,0 +1,110 @@
+@import "../variables";
+@import "../mixin";
+
+body{
+  color: $sec-font-color;
+  text-decoration: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+@each $amount, $size in ((5 5px)(10 10px)(12 12px) (15 15px) (18 18px) (20 20px) (25 25px) (30 30px) (40 40px) (50 50px) (80 80px)(100 100px)(120 120px)(220 220px)(320 320px)(460 460px)) {
+  .mg-#{$amount} {
+    margin:$size !important;
+  }
+  .mt-#{$amount} {
+    margin-top: $size !important;
+  }
+  .mb-#{$amount} {
+    margin-bottom: $size !important;
+  }
+  .mr-#{$amount} {
+    margin-right: $size !important;
+  }
+  .ml-#{$amount} {
+    margin-left: $size !important;
+  }
+  .pd-#{$amount} {
+    padding:$size !important;
+  }
+  .pt-#{$amount}{
+    padding-top: $size !important;
+  }
+  .pl-#{$amount}{
+    padding-left: $size !important;
+  }
+  .pr-#{$amount}{
+    padding-right: $size !important;
+  }
+  .pb-#{$amount}{
+    padding-bottom: $size !important;
+  }
+}
+
+@each $amount, $size in ( (12 12px) (14 14px) (16 16px) (18 18px) (20 20px) (24 24px) ) {
+  .font-#{$amount} {
+    font-size: $size !important;
+  }
+}
+.font-bold{
+  font-weight: bold;
+}
+
+.sec-gray-bolder{
+  border:1px solid $sec-border-color4;
+}
+.sec-gray-bolder-t {
+  border-top: 1px solid $sec-border-color4;
+}
+.sec-gray-bolder-l {
+  border-left: 1px solid $sec-border-color4;
+}
+.sec-gray-bolder-r {
+  border-right: 1px solid $sec-border-color4;
+}
+.sec-gray-bolder-b {
+  border-bottom: 1px solid $sec-border-color4;
+}
+
+.sec-blue-link{
+  text-decoration: none;
+  color: $sec-blue-color2;
+  cursor: pointer;
+  &:hover{
+    color: lighten($sec-blue-color2, 5%);
+  }
+}
+.sec-link{
+  text-decoration: none;
+  color: $sec-gray-font-color;
+  cursor: pointer;
+  &:hover{
+    color: $sec-hover-color;
+  }
+}
+.sec-required{
+  &:before{
+    content: '* ';
+    color: $sec-orange-color2;
+    vertical-align: middle;
+  }
+}
+
+input.sec-input{
+  @include sec-input();
+}
+select.sec-select{
+  @include sec-select();
+}
+textarea.sec-textarea{
+  @include sec-textarea();
+}
+
+.text-nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

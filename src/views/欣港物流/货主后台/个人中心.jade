@@ -1,0 +1,80 @@
+extends ../../layouts/managerLayout
+block content
+    .mt-20.mb-20
+        .person-info.white-bg
+            .img-box
+                //img(src="/images/manager/user-default.png")
+                i.icon.icon-user-default
+            .person-info-content
+                .ui-row-sm
+                    label.label 姓名：
+                    span 尖耳朵的阿凡达妹妹
+                    a.sec-blue-link.ml-30 实名认证
+                .ui-row-sm
+                    label.label 密码：
+                    span ******
+                    a.sec-blue-link.ml-30 修改密码
+                .ui-row-sm
+                    label.label 手机号码：
+                    span 186****9696
+                    a.sec-blue-link.ml-30 修改手机
+                .ui-row-sm
+                    label.label 邮箱：
+                    span 50517***110@139.com
+                    a.sec-blue-link.ml-30 修改邮箱
+            .person-nav.mr-20
+                a.person-nav-item
+                    .title 已报价
+                    .num
+                        span.orange 4
+                        span 单
+                    .unit (1000.000吨)
+                a.person-nav-item
+                    .title 运输中
+                    .num
+                        span.orange 4
+                        span 单
+                    .unit (1000.000吨)
+                a.person-nav-item
+                    .title 待评价
+                    .num
+                        span.orange 4
+                        span 单
+                    .unit (1000.000吨)
+
+        .white-bg.mt-20.pd-20
+            .section-title
+                | 公司信息
+                span.info (您下单时的公司信息)
+
+            .sec-table-1#recordList.mt-20
+                table
+                    thead
+                        tr
+                            th 公司全称
+                            th 联系人
+                            th 联系方式
+                            th 地址
+                            th 操作
+                    tbody
+                        tr(class="odd")
+                            td 湖南钢信信息技术有限公司
+                            td 周小强
+                            td 18627550011
+                            td 湖南省长沙市壹号座品1102
+                            td
+                                a.sec-blue-link 修改
+                        tr(class="even")
+                            td 湖南钢信信息技术有限公司
+                            td 周小强
+                            td 18627550011
+                            td 湖南省长沙市壹号座品1102
+                            td
+                                a.sec-blue-link 修改
+                        tr(class="odd")
+                            td 湖南钢信信息技术有限公司
+                            td 周小强
+                            td 18627550011
+                            td 湖南省长沙市壹号座品1102
+                            td
+                                a.sec-blue-link 修改

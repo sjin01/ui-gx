@@ -1,0 +1,76 @@
+extends ../../layouts/managerLayout
+block content
+    .mt-20.mb-20.white-bg.pl-20.pr-20.pb-20
+        .order-page-title
+            label 评价订单
+        .order-detal-box.sec-gray-bolder
+            .ui-row-sm
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 订单号:
+                    span.ui-col-8 4567890987654356
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 起始地:
+                    span.ui-col-8 上海罗津港
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 目的地:
+                    span.ui-col-8 长沙壹号座品
+            .ui-row-sm
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 水货:
+                    .ui-col-8
+                        span 木材/水泥
+                        span.ml-20 2000.00吨
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 单价:
+                    span.ui-col-8 60.00元/吨
+                .ui-col-4
+                    label.label.ui-col-4.no-padding 不含税总运费:
+                    span.ui-col-8 1114000.00元/吨
+        .order-evaluate.pt-10.pb-10
+            .ui-row-sm.no-margin
+                label.ui-col-1 服务评价:
+                .ui-col-11
+                    input(type="text", value="2", data-size="xs").kv-fa.rating-loading
+            .ui-row-sm.no-margin
+                label.ui-col-1 评价得分:
+                .ui-col-11
+                    span.score#myScore 2分
+            .ui-row-sm.no-margin
+                label.ui-col-12.detail 若不满意请选择原因(得分≤3分时必选)
+        .sec-gray-bolder.order-evaluate-form.pt-10.pb-10
+            table
+                - var i =0;
+                while (i<3)
+                    - i++;
+                    tr
+                        td.name(width="15%") 运输船名
+                        td(width="35%")
+                            span
+                                input(type="checkbox")
+                                | 货损货差
+                            span.ml-20
+                                input(type="checkbox")
+                                | 延迟送达
+                            span.ml-20
+                                input(type="checkbox")
+                                | 服务态度差
+                        td(width="50%")
+                            span 备注:
+                            input(type="text")
+        .btn-group.mt-20
+            .cancel-btn 取消
+            .submit-btn.ml-20 确定
+    script(type="text/javascript").
+        require(['jquery', 'iCheck', 'star-rating-fa'], function ($) {
+            $('input[type="checkbox"]').iCheck();
+
+            $('.kv-fa').rating({
+                theme: 'krajee-fa',
+                filledStar: '<i class="fa fa-star"></i>',
+                emptyStar: '<i class="fa fa-star"></i>'
+            });
+            $('.kv-fa').on('change', function () {
+                // console.log('Rating selected: ' + $(this).val());
+                $('#myScore').html( $(this).val() + '分');
+            });
+        });
