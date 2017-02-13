@@ -7,16 +7,16 @@ height: nth($sprite, 4);
 }
 
 @function sprite-width($sprite) {
-@return nth($sprite, 3);
+@return nth($sprite, 3)-8px;
 }
 
 @function sprite-height($sprite) {
-@return nth($sprite, 4);
+@return nth($sprite, 4)-8px;
 }
 
 @mixin sprite-position($sprite) {
-$sprite-offset-x: nth($sprite, 1);
-$sprite-offset-y: nth($sprite, 2);
+$sprite-offset-x: nth($sprite, 1)-4px;
+$sprite-offset-y: nth($sprite, 2)-4px;
 background-position: $sprite-offset-x  $sprite-offset-y;
 }
 
@@ -25,8 +25,10 @@ background-position: $sprite-offset-x  $sprite-offset-y;
 background-repeat: no-repeat;
 overflow: hidden;
 display: $display;
-@include sprite-width($sprite);
-@include sprite-height($sprite);
+// @include sprite-width($sprite);
+// @include sprite-height($sprite);
+width:sprite-width($sprite);
+height:sprite-height($sprite);
 }
 {{#each layouts}}
     {{#each layout.items}}
@@ -42,9 +44,11 @@ display: $display;
 
 {{#each layouts}}
     .{{cssesc classname}}{
-    display: inline-flex;
-    align-items: center;
+    // display: inline-flex;
+    // align-items: center;
+    // vertical-align: middle;
     vertical-align: middle;
+    display: inline-block;
     }
     {{#each sprites}}
 

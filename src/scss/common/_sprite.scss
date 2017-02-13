@@ -7,16 +7,16 @@ height: nth($sprite, 4);
 }
 
 @function sprite-width($sprite) {
-@return nth($sprite, 3);
+@return nth($sprite, 3)-8px;
 }
 
 @function sprite-height($sprite) {
-@return nth($sprite, 4);
+@return nth($sprite, 4)-8px;
 }
 
 @mixin sprite-position($sprite) {
-$sprite-offset-x: nth($sprite, 1);
-$sprite-offset-y: nth($sprite, 2);
+$sprite-offset-x: nth($sprite, 1)-4px;
+$sprite-offset-y: nth($sprite, 2)-4px;
 background-position: $sprite-offset-x  $sprite-offset-y;
 }
 
@@ -25,124 +25,53 @@ background-position: $sprite-offset-x  $sprite-offset-y;
 background-repeat: no-repeat;
 overflow: hidden;
 display: $display;
-@include sprite-width($sprite);
-@include sprite-height($sprite);
+// @include sprite-width($sprite);
+// @include sprite-height($sprite);
+width:sprite-width($sprite);
+height:sprite-height($sprite);
 }
-        $check-dropdown: -0px -0px 12px 9px;
-        .check-dropdown{
+        $icon-close: -0px -0px 20px 21px;
+        .icon-close{
         &:before {
-        @include sprite($check-dropdown,inline-block);
+        @include sprite($icon-close,inline-block);
         }
         }
-        $check-radio-disabled: -0px -9px 13px 13px;
-        .check-radio-disabled{
+        $icon-error: -0px -21px 48px 48px;
+        .icon-error{
         &:before {
-        @include sprite($check-radio-disabled,inline-block);
+        @include sprite($icon-error,inline-block);
         }
         }
-        $check-check-disabled: -0px -21px 13px 13px;
-        .check-check-disabled{
+        $icon-success: -0px -69px 48px 48px;
+        .icon-success{
         &:before {
-        @include sprite($check-check-disabled,inline-block);
+        @include sprite($icon-success,inline-block);
         }
         }
-        $check-check-hover: -0px -34px 13px 13px;
-        .check-check-hover{
+        $icon-undo: -0px -117px 48px 48px;
+        .icon-undo{
         &:before {
-        @include sprite($check-check-hover,inline-block);
+        @include sprite($icon-undo,inline-block);
         }
         }
-        $check-check: -0px -46px 13px 13px;
-        .check-check{
+        $icon-warning: -0px -165px 58px 59px;
+        .icon-warning{
         &:before {
-        @include sprite($check-check,inline-block);
-        }
-        }
-        $check-check-checked-disabled: -0px -59px 13px 13px;
-        .check-check-checked-disabled{
-        &:before {
-        @include sprite($check-check-checked-disabled,inline-block);
-        }
-        }
-        $check-radio-checked-disabled: -0px -71px 13px 13px;
-        .check-radio-checked-disabled{
-        &:before {
-        @include sprite($check-radio-checked-disabled,inline-block);
-        }
-        }
-        $check-radio-checked: -0px -84px 13px 13px;
-        .check-radio-checked{
-        &:before {
-        @include sprite($check-radio-checked,inline-block);
-        }
-        }
-        $check-check-checked: -0px -96px 13px 13px;
-        .check-check-checked{
-        &:before {
-        @include sprite($check-check-checked,inline-block);
-        }
-        }
-        $check-radio-hover: -0px -109px 13px 13px;
-        .check-radio-hover{
-        &:before {
-        @include sprite($check-radio-hover,inline-block);
-        }
-        }
-        $check-radio: -0px -121px 13px 13px;
-        .check-radio{
-        &:before {
-        @include sprite($check-radio,inline-block);
-        }
-        }
-        $popup-error: -0px -134px 24px 24px;
-        .popup-error{
-        &:before {
-        @include sprite($popup-error,inline-block);
-        }
-        }
-        $popup-success: -0px -158px 24px 24px;
-        .popup-success{
-        &:before {
-        @include sprite($popup-success,inline-block);
-        }
-        }
-        $popup-undo: -0px -182px 24px 24px;
-        .popup-undo{
-        &:before {
-        @include sprite($popup-undo,inline-block);
-        }
-        }
-        $popup-bg-upload: -0px -206px 29px 29px;
-        .popup-bg-upload{
-        &:before {
-        @include sprite($popup-bg-upload,inline-block);
-        }
-        }
-        $popup-warning: -0px -235px 29px 30px;
-        .popup-warning{
-        &:before {
-        @include sprite($popup-warning,inline-block);
+        @include sprite($icon-warning,inline-block);
         }
         }
 
-    .app-icon{
-    display: inline-flex;
-    align-items: center;
+    .gx-icon{
+    // display: inline-flex;
+    // align-items: center;
+    // vertical-align: middle;
     vertical-align: middle;
+    display: inline-block;
     }
 
-        .app-icon:before {
+        .gx-icon:before {
         background-image: url('../../images/sprite.png');
         content:'';
         margin:auto;
         }
-
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .app-icon:before {
-        background-image: url('../../images/sprite@2x.png');
-        content:'';
-        margin:auto;
-            background-size: 29px 264px;
-        }
-            }
 
