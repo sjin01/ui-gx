@@ -1,0 +1,11 @@
+@import "../variables";
+.gx-tree{
+  .gx-sub-tree{
+    display: none;
+  }
+  .active{
+    > .gx-sub-tree{
+      display: block;
+    }
+  }
+}

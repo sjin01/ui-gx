@@ -1,0 +1,30 @@
+extends ../layouts/defaultLayout
+block stylesheets
+    //link(href=relativeRoot+"../css/common/index.min.css",type="text/css",rel="stylesheet")
+block content
+    div.tree
+
+    script(type="text/javascript").
+        require(['jquery', 'gx-tree'], function ($) {
+
+            /**
+             * 默认 叶子节点才发 a(href) 的请求, 否则只是收起和展开
+             *
+             有 onNodeClick 配置项时, 永远不会自动发请求, 叶子节点才回调
+             有 allClickCallBack:true 这个配置项时, 不管什么节点都会 回调, 只能和 callback组合使用才生效.
+
+             下面三个配置项, 用来指定 对数据的取值。
+             pathAttrName: options.pathAttrName || 'path',
+             nameAttrName: options.nameAttrName || 'name',
+             subListAttrName: options.subListAttrName || 'items',
+
+             */
+            $('.tree').tree({
+                data: !{JSON.stringify(list)},
+                onNodeClick: function (item) {
+                    // 回调整个 对象, 随你处置
+                    console.log(item);
+                }
+                // allClickCallBack: false
+            });
+        });
