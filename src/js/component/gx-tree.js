@@ -15,8 +15,12 @@ define(['jquery'], function ($) {
       activeClassName: 'active',
       dataKey: 'obj',
       pathAttrName: options.pathAttrName || 'path',
+      codeAttrName: options.codeAttrName || 'code',
       nameAttrName: options.nameAttrName || 'name',
       subListAttrName: options.subListAttrName || 'items',
+      iconClassAttrName: options.iconClassAttrName || 'iconClass',
+      curCode: options.cur || null,
+      curClass: options.curClass || 'cur'
     };
 
     var $main, nodeList = [], node$List = [];
@@ -29,11 +33,18 @@ define(['jquery'], function ($) {
     /**
      * 递归 构建 html 结构
      */
-    var construct = function (list, $target) {
+    var construct = function (list, $target, level) {
+      $target.addClass('level'+level);
       for (var i = 0; i < list.length; i++) {
         var item = list[i]; // 暂存对象
         // 对象对应的 一项 html dom 节点
-        $target.append('<li><a href="' + item[option.pathAttrName] + '"><span class="tree-text">' + item[option.nameAttrName] + '</span></a></li>');
+        var htmlStr = '<li>' +
+          '<a href="' + item[option.pathAttrName] + '">' +
+          '<i class="'+item[option.iconClassAttrName]+'"></i>' +
+          '<span class="tree-text">' + item[option.nameAttrName] + '</span>' +
+          '</a></li>';
+        $target.append(htmlStr);
+
         // jquery 方式获取当前节点
         var $curObj = $target.find('li:last');
         // item 数据存到当前节点 data 下
@@ -44,23 +55,41 @@ define(['jquery'], function ($) {
         nodeList[index] = item;
         node$List[index] = $curObj;
 
+        // 当前菜单 高亮
+        if(option.curCode && option.curCode == item[option.codeAttrName]){
+          $curObj.find('a').addClass(option.curClass);
+        }
+
         // 如果有子数据, 递归
         if (item[option.subListAttrName] && item[option.subListAttrName].length > 0) {
           $curObj.append(TEMPLATE.subMain);
-          construct(item[option.subListAttrName], $curObj.find('.gx-sub-tree'));
+          construct(item[option.subListAttrName], $curObj.find('.gx-sub-tree'), level+1);
         }
       }
+    };
+
+    /**
+     * 分析数据, 高亮和展开 当前 节点
+     */
+    var cur = function (){
+      // console.log(nodeList);
+      // console.log(node$List);
+      if(option.curCode){
+        var $curNode = $main.find('.' + option.curClass);
+        $curNode.parents('li').addClass(option.activeClassName);
+        $main.find('.' + option.activeClassName).find('a:first').addClass(option.curClass);
+      }else{
+        // 展示第一个
+        node$List[0].addClass(option.activeClassName);
+      }
+
     };
 
     var init = function (treeData) {
       $this.append(TEMPLATE.main);
       $main = $this.find('.gx-tree');
-      construct(treeData, $main);
-      // console.log(nodeList);
-      // console.log(node$List);
-
-      // 展示第一个
-      node$List[0].addClass(option.activeClassName);
+      construct(treeData, $main, 1);   // 生成 树结构 dom
+      cur();  // 根据当前高亮, 设置默认展开
 
       // 绑定事件
       $('.gx-tree a').on('click.gxTree', function () {
@@ -73,9 +102,13 @@ define(['jquery'], function ($) {
           } else {
             $pa.addClass(option.activeClassName);
           }
+
+          // 根据 配置 是否回调 ( 非叶子节点 )
           if (options.onNodeClick && options.allClickCallBack) options.onNodeClick(obj);
           return false;
         }
+
+        // 叶子节点,根据配置 看是回调还是直接访问 href
         if (options.onNodeClick) {
           options.onNodeClick(obj);
           return false;

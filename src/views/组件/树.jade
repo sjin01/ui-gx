@@ -14,13 +14,19 @@ block content
              有 allClickCallBack:true 这个配置项时, 不管什么节点都会 回调, 只能和 callback组合使用才生效.
 
              下面三个配置项, 用来指定 对数据的取值。
-             pathAttrName: options.pathAttrName || 'path',
-             nameAttrName: options.nameAttrName || 'name',
-             subListAttrName: options.subListAttrName || 'items',
-
+             options.pathAttrName || 'path',    路径
+             options.codeAttrName || 'code',     code 属性名
+             options.nameAttrName || 'name',   显示name
+             options.subListAttrName || 'items',   子记录集合
+             options.iconClassAttrName || 'iconClass',   icon class
+             options.cur || null,
+             options.curClass || 'cur'
              */
             $('.tree').tree({
                 data: !{JSON.stringify(list)},
+                cur: 16,
+                curClass: 'cur',
+                codeAttrName: 'id',         // 取值配置示例: 因为数据的属性名和组件定义的默认属性名存在差异,  特此配置
                 onNodeClick: function (item) {
                     // 回调整个 对象, 随你处置
                     console.log(item);

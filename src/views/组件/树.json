@@ -5,12 +5,14 @@
       "name": "系统管理",
       "pid": 0,
       "path": "#",
+      "iconClass":"icon icon-menu-pro",
       "items": [
         {
           "id":4,
           "name":"用户管理",
           "pid":1,
           "path": "#",
+          "iconClass":"",
           "items":[
             {
               "id": 15,
@@ -31,6 +33,7 @@
           "name":"权限管理",
           "pid":1,
           "path": "#",
+          "iconClass":"",
           "items":[]
         }
       ]
@@ -40,6 +43,7 @@
       "name": "发布管理",
       "pid": 0,
       "path": "#",
+      "iconClass":"icon icon-menu-settings",
       "items":[
         {
           "id":6,
@@ -61,6 +65,7 @@
       "id": 3,
       "name": "推送管理",
       "path": "#",
+      "iconClass":"icon icon-menu-data",
       "pid": 0
     }
   ]
